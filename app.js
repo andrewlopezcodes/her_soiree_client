@@ -3,9 +3,9 @@ window.addEventListener('load', () => {
 
   const baseURL = 'http://localhost:3018/her_soiree';
 
-  const createEvent = () => {
+  const createher_soiree = () => {
     event.preventDefault();
-    console.log('creatEvent');
+    console.log('createher_soiree');
     const title = document.querySelector('#title').value;
     const organizer_name = document.querySelector('#organizer_name').value;
     const organizer_website_url = document.querySelector('#organizer_website_url').value;
@@ -26,12 +26,12 @@ window.addEventListener('load', () => {
     const event_flyer_url = document.querySelector('#event_flyer_url').value;
     axios.post(baseURL, {title, organizer_name, orgnizer_website_url, event_type, event_topic, description, venue_name, street_address, city, state, zipcode, participant_age, event_start_time, event_start_time, event_finish_time, event_frequency, dress_code, event_price, event_flyer_url})
       .then( result => {
-        showEvent( result.data );
+        showher_sSoiree( result.data );
       })
       .catch( error => { console.error( error ); });
   }
 
-  const newEvent = () => {
+  const newher_soiree = () => {
     document.querySelector('#app').innerHTML = `
       <form>
         <div class="form-group">
@@ -44,7 +44,7 @@ window.addEventListener('load', () => {
         </div>
         <div class="form-group">
           <label for="organizer_website_url">Organizer website url</label>
-          <input type="text" id="organizer_website_url" class="form-control" />
+          <input type="url" id="organizer_website_url" class="form-control" />
         </div>
         <div class="form-group">
           <label for="event_type">Event type</label>
@@ -63,177 +63,377 @@ window.addEventListener('load', () => {
           <input type="text" id="street_address" class="form-control" />
         </div>
         <div class="form-group">
-          <label for="title">Title</label>
-          <input type="text" id="title" class="form-control" />
+          <label for="city">City</label>
+          <input type="text" id="city" class="form-control" />
         </div>
         <div class="form-group">
-          <label for="title">Title</label>
-          <input type="text" id="title" class="form-control" />
+          <label for="state">State</label>
+          <input type="text" id="state" class="form-control" />
         </div>
         <div class="form-group">
-          <label for="title">Title</label>
-          <input type="text" id="title" class="form-control" />
+          <label for="zipcode">Zipcode</label>
+          <input type="text" id="zipcode" class="form-control" />
         </div>
         <div class="form-group">
-          <label for="title">Title</label>
-          <input type="text" id="title" class="form-control" />
+          <label for="participant_age">Participant age</label>
+          <input type="text" id="participant_age" class="form-control" />
+        </div>
+        <div style="overflow:hidden;">
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-8">
+                <div id="event_start_time">
+                </div>
+              </div>
+            </div>
+          </div>
+          <script type="text/javascript">
+            $(function () {
+              $('#event_start_time').datetimepicker({
+                inline: true,
+                sideBySide: true
+              });
+            });
+          </script>
+        </div>
+        <div style="overflow:hidden;">
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-8">
+                <div id="event_finish_time">
+                </div>
+              </div>
+            </div>
+          </div>
+          <script type="text/javascript">
+            $(function () {
+              $('#event_finish_time').datetimepicker({
+                inline: true,
+                sideBySide: true
+              });
+            });
+          </script>
         </div>
         <div class="form-group">
-          <label for="title">Title</label>
-          <input type="text" id="title" class="form-control" />
+          <label for="event_frequency">Event Frequency</label>
+          <input type="text" id="event_frequency" class="form-control" />
         </div>
         <div class="form-group">
-          <label for="title">Title</label>
-          <input type="text" id="title" class="form-control" />
+          <label for="dress_code">Dress Code</label>
+          <input type="text" id="dress_code" class="form-control" />
         </div>
         <div class="form-group">
-          <label for="title">Title</label>
-          <input type="text" id="title" class="form-control" />
+          <label for="event_price">Ticket Price</label>
+          <input type="text" id="event_price" class="form-control" />
         </div>
         <div class="form-group">
-          <label for="title">Title</label>
-          <input type="text" id="title" class="form-control" />
+          <label for="event_flyer_url">Event Flyer URL</label>
+          <input type="url" id="event_flyer_url" class="form-control" />
         </div>
-        <div class="form-group">
-          <label for="title">Title</label>
-          <input type="text" id="title" class="form-control" />
-        </div>
-        <div class="form-group">
-          <label for="title">Title</label>
-          <input type="text" id="title" class="form-control" />
-        </div>
-        <div class="form-group">
-          <label for="title">Title</label>
-          <input type="text" id="title" class="form-control" />
-        </div>
-        <button type="submit" class="btn btn-primary" id="create-movie">Create</button>
+        <button type="submit" class="btn btn-primary" id="create-event">Create Event</button>
       </form>
     `;
-    document.querySelector('#create-movie').addEventListener('click', createMovie);
+    document.querySelector('#create-her_soiree').addEventListener('click', createher_soire);
   }
 
-  const showEvent = movie => {
-    console.log('Show page for movie:');
-    console.log(movie);
+  const showher_soiree = her_soiree => {
+    console.log('Show page for Soiree:');
+    console.log(her_soiree);
     document.querySelector('#app').innerHTML = `
-      <div class="h3">${movie.title}</div>
-      <img src="${movie.poster_url}" width="40%" />
+      <div class="h3">${her_soiree.title}</div>
+      <img src="${her_soiree.event_flyer_url}" width="40%" />
       <table class="table table-striped">
         <tbody>
           <tr>
-            <th scope="row">Director</th>
-            <td>${movie.director}</td>
+            <th scope="row">Event Title</th>
+            <td>${her_soiree.title}</td>
           </tr>
           <tr>
-            <th scope="row">Year</th>
-            <td>${movie.year}</td>
+            <th scope="row">Organizer's Name</th>
+            <td>${her_soiree.organizer_name}</td>
           </tr>
           <tr>
-            <th scope="row">Rating</th>
-            <td>${movie.rating}</td>
+            <th scope="row">Organizer's Website</th>
+            <td>${her_soiree.organizer_website_url}</td>
+          </tr>
+          <tr>
+            <th scope="row">Event Type</th>
+            <td>${her_soiree.event_type}</td>
+          </tr>
+          <tr>
+            <th scope="row">Event Topic</th>
+            <td>${her_soiree.event_topic}</td>
+          </tr>
+          <tr>
+            <th scope="row">Description</th>
+            <td>${her_soiree.description}</td>
+          </tr>
+          <tr>
+            <th scope="row">Venue Name</th>
+            <td>${her_soiree.venue_name}</td>
+          </tr>
+          <tr>
+            <th scope="row">Stree Address</th>
+            <td>${her_soiree.street_address}</td>
+          </tr>
+          <tr>
+            <th scope="row">City</th>
+            <td>${her_soiree.city}</td>
+          </tr>
+          <tr>
+            <th scope="row">State</th>
+            <td>${her_soiree.state}</td>
+          </tr>
+          <tr>
+            <th scope="row">Zipcode</th>
+            <td>${her_soiree.zipcode}</td>
+          </tr>
+          <tr>
+            <th scope="row">Participants Age</th>
+            <td>${her_soiree.participant_age}</td>
+          </tr>
+          <tr>
+            <th scope="row">Event Start Time</th>
+            <td>${her_soiree.event_start_time}</td>
+          </tr>
+          <tr>
+            <th scope="row">Event Finish Time</th>
+            <td>${her_soiree.event_finish_time}</td>
+          </tr>
+          <tr>
+            <th scope="row">Event Frequency</th>
+            <td>${her_soiree.event_frequency}</td>
+          </tr>
+          <tr>
+            <th scope="row">Dress Code</th>
+            <td>${her_soiree.dress_code}</td>
+          </tr>
+          <tr>
+            <th scope="row">Event Price</th>
+            <td>${her_soiree.event_price}</td>
+          </tr>
+          <tr>
+            <th scope="row">event_flyer_url</th>
+            <td>${her_soiree.event_flyer_url}</td>
           </tr>
         </tbody>
       </table>
     `;
   }
 
-  const updateEvent = id =>{
+  const updateher_soire = id =>{
     event.preventDefault();
-    console.log('createMovie');
+    console.log('createher_soire');
     const title = document.querySelector('#edit-title').value;
-    const director = document.querySelector('#edit-director').value;
-    const year = document.querySelector('#edit-year').value;
-    const rating = document.querySelector('#edit-rating').value;
-    const poster_url = document.querySelector('#edit-poster_url').value;
-    axios.put(`${baseURL}/${id}`, {title, director, year, rating, poster_url})
+    const organizer_name = document.querySelector('#edit-organizer_name').value;
+    const organizer_website_url = document.querySelector('#edit-organizer_website_url').value;
+    const event_type = document.querySelector('#edit-event_type').value;
+    const event_topic = document.querySelector('#edit-event_topic').value;
+    const description = document.querySelector('#edit-description').value;
+    const venue_name = document.querySelector('#edit-venue_name').value;
+    const street_address = document.querySelector('#edit-street_address').value;
+    const city = document.querySelector('#edit-city').value;
+    const state = document.querySelector('#edit-state').value;
+    const zipcode = document.querySelector('#edit-zipcode').value;
+    const participant_age = document.querySelector('#edit-participant_age').value;
+    const event_start_time = document.querySelector('#edit-event_start_time').value;
+    const event_finish_time =document.querySelector('#edit-event_finish_time').value;
+    const event_frequency = document.querySelector('#edit-event_frequency').value;
+    const dress_code = document.querySelector('#edit-dress_code').value;
+    const event_price = document.querySelector('#edit-event_price').value;
+    const event_flyer_url = document.querySelector('#edit-event_flyer_url').value;
+    axios.post(baseURL, {title, organizer_name, orgnizer_website_url, event_type, event_topic, description, venue_name, street_address, city, state, zipcode, participant_age, event_start_time, event_start_time, event_finish_time, event_frequency, dress_code, event_price, event_flyer_url})
       .then( result => {
-        showMovie( result.data );
+        showher_soiree( result.data );
       })
       .catch( error => { console.error( error ); });
   }
 
-  const editEvent = movie => {
+  const edither_soiree = her_soiree => {
     document.querySelector('#app').innerHTML = `
-      <form>
+    <form>
+      <div class="form-group">
+        <label for="edit-title">Title</label>
+        <input type="text" id="eidit-title" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="edit-organizer_name">Organizer name</label>
+        <input type="text" id="eidit-organizer_name" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="edit-organizer_website_url">Organizer website url</label>
+        <input type="url" id="eidit-organizer_website_url" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="edit-event_type">Event type</label>
+        <input type="text" id="eidit-event_type" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="edit-description">Description</label>
+        <input type="text" id="eidit-description" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="edit-venue_name">Venue name</label>
+        <input type="text" id="eidit-venue_name" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="edit-street_address">Street Address</label>
+        <input type="text" id="eidit-street_address" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="edit-city">City</label>
+        <input type="text" id="eidit-city" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="edit-state">State</label>
+        <input type="text" id="eidit-state" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="edit-zipcode">Zipcode</label>
+        <input type="text" id="eidit-zipcode" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="edit-participant_age">Participant age</label>
+        <input type="text" id="eidit-participant_age" class="form-control" />
+      </div>
+      <div style="overflow:hidden;">
         <div class="form-group">
-          <label for="ediit-title">Title</label>
-          <input type="text" id="edit-title" class="form-control" />
+          <div class="row">
+            <div class="col-md-8">
+              <div id="eidit-event_start_time">
+              </div>
+            </div>
+          </div>
         </div>
+        <script type="text/javascript">
+          $(function () {
+            $('#event_start_time').datetimepicker({
+              inline: true,
+              sideBySide: true
+            });
+          });
+        </script>
+      </div>
+      <div style="overflow:hidden;">
         <div class="form-group">
-          <label for="edit-director">Director</label>
-          <input type="text" id="edit-director" class="form-control" />
+          <div class="row">
+            <div class="col-md-8">
+              <div id="eidit-event_finish_time">
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="edit-year">Year</label>
-          <input type="text" id="edit-year" class="form-control" />
-        </div>
-        <div class="form-group">
-          <label for="edit-rating">Rating</label>
-          <input type="text" id="edit-rating" class="form-control" />
-        </div>
-        <div class="form-group">
-          <label for="edit-poster_url">Poster URL</label>
-          <input type="text" id="edit-poster_url" class="form-control" />
-        </div>
-        <button type="submit" class="btn btn-primary" id="update-movie">Update</button>
-      </form>
-    `;
-    document.querySelector('#edit-title').value = movie.title;
-    document.querySelector('#edit-director').value = movie.director;
-    document.querySelector('#edit-year').value = movie.year;
-    document.querySelector('#edit-rating').value = movie.rating;
-    document.querySelector('#edit-poster_url').value = movie.poster_url;
-    document.querySelector('#update-movie').addEventListener('click', ()=>{
-      updateMovie(movie.id); });
+        <script type="text/javascript">
+          $(function () {
+            $('#event_finish_time').datetimepicker({
+              inline: true,
+              sideBySide: true
+            });
+          });
+        </script>
+      </div>
+      <div class="form-group">
+        <label for="edit-event_frequency">Event Frequency</label>
+        <input type="text" id="eidit-event_frequency" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="edit-dress_code">Dress Code</label>
+        <input type="text" id="eidit-dress_code" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="edit-event_price">Ticket Price</label>
+        <input type="text" id="eidit-event_price" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="edit-event_flyer_url">Event Flyer URL</label>
+        <input type="url" id="eidit-event_flyer_url" class="form-control" />
+      </div>
+      <button type="submit" class="btn btn-primary" id="eidit-create-event">Create Event</button>
+    </form>
+  `;
+    document.querySelector('#edit-title').value = her_soiree.title;
+    document.querySelector('#edit-director').value = her_soiree.director;
+    document.querySelector('#edit-year').value = her_soiree.year;
+    document.querySelector('#edit-rating').value = her_soiree.rating;
+    document.querySelector('#edit-poster_url').value = her_soiree.poster_url;
+    document.querySelector('#updateher_soiree').addEventListener('click', ()=>{
+      updateher_soire(her_soiree.id); });
   }
 
-  const deleteMovie = id => {
+  const deleteher_soiree = id => {
     console.log('Deleting movie no.', id);
     axios.delete(`${baseURL}/${id}`)
-    .then(result => {allMovies(); })
+    .then(result => {allher_soiree(); })
     .catch(error => {console.error(error); });
   }
 
-  const allMovies = () => {
+  const allher_soiree = () => {
     document.querySelector('#app').innerHTML = `
       <div>
-        <button type="button" class="btn btn-success" id="new-movie">Add a movie</button>
+        <button type="button" class="btn btn-success" id="newher_soiree">Add a Soiree</button>
       </div>
       <table class="table table-striped table-dark">
         <thead>
           <tr>
             <th scope="col">Title</th>
-            <th scope="col">Director</th>
-            <th scope="col">Year</th>
-            <th scope="col">Rating</th>
-            <th scope="col"></th>
+            <th scope="col">Organizer Name</th>
+            <th scope="col">Organizer Website</th>
+            <th scope="col">Event Type</th>
+            <th scope="col">Event Topic</th>
+            <th scope="col">Description</th>
+            <th scope="col">Venue Name</th>
+            <th scope="col">Street Address</th>
+            <th scope="col">City</th>
+            <th scope="col">State</th>
+            <th scope="col">Zipcode</th>
+            <th scope="col">Participant Age</th>
+            <th scope="col">Event Start Time</th>
+            <th scope="col">Event Finish Time</th>
+            <th scope="col">Event Frequency</th>
+            <th scope="col">Dress Code</th>
+            <th scope="col">Price</th>
+            <th scope="col">Flyer URL</th>
           </tr>
         </thead>
-        <tbody id="movie-tbody"></tbody>
+        <tbody id="her_soiree-tbody"></tbody>
       </table>
     `;
-    document.querySelector('#new-movie').addEventListener('click', newMovie);
+    document.querySelector('#newher_soiree').addEventListener('click', newher_soiree);
     axios.get( baseURL )
-      .then( movies => {
-        movies.data.forEach( movie => {
+      .then( her_soiree => {
+        her_soiree.data.forEach( her_soiree => {
           const trEl = document.createElement('tr');
           trEl.innerHTML = `
-            <td>${movie.title}</td>
-            <td id="show-${movie.id}">${movie.title}</td>
-            <td>${movie.director}</td>
-            <td>${movie.year}</td>
-            <td>${movie.rating}</td>
-            <td><button type="button" class="btn btn-info btn-sm" id="edit-${movie.id}">Edit</button>&nbsp;<button type="button" class="btn btn-danger btn-sm" id="delete-${movie.id}">Delete</button></td>
+            <td>${her_soiree.title}</td>
+            <td id="show-${her_soiree.id}">${her_soiree.title}</td>
+            <td>${her_soiree.organizer_name}</td>
+            <td>${her_soiree.organizer_website_url}</td>
+            <td>${her_soiree.event_type}</td>
+            <td>${her_soiree.event_topic}</td>
+            <td>${her_soiree.description}</td>
+            <td>${her_soiree.venue_name}</td>
+            <td>${her_soiree.street_address}</td>
+            <td>${her_soiree.city}</td>
+            <td>${her_soiree.state}</td>
+            <td>${her_soiree.zipcode}</td>
+            <td>${her_soiree.participant_age}</td>
+            <td>${her_soiree.event_start_time}</td>
+            <td>${her_soiree.event_finish_time}</td>
+            <td>${her_soiree.event_frequency}</td>
+            <td>${her_soiree.dress_code}</td>
+            <td>${her_soiree.event_price}</td>
+            <td>${her_soiree.event_flyer_url}</td>
+            <td><button type="button" class="btn btn-info btn-sm" id="edit-${her_soiree.id}">Edit Soiree</button>&nbsp;<button type="button" class="btn btn-danger btn-sm" id="delete-${her_soiree.id}">Delete Soiree</button></td>
           `;
-          document.querySelector('#movie-tbody').appendChild(trEl);
-          document.querySelector(`#show-${movie.id}`).addEventListener('click', () => { showMovie(movie); });
-          document.querySelector(`#edit-${movie.id}`).addEventListener('click', () => { editMovie(movie); });
-          document.querySelector(`#delete-${movie.id}`).addEventListener('click', () => { deleteMovie(movie.id); });
+          document.querySelector('#her_soiree-tbody').appendChild(trEl);
+          document.querySelector(`#show-${her_soiree.id}`).addEventListener('click', () => { showher_soiree(her_soiree); });
+          document.querySelector(`#edit-${her_soiree.id}`).addEventListener('click', () => { edither_soiree(her_soiree); });
+          document.querySelector(`#delete-${her_soiree.id}`).addEventListener('click', () => { deleteher_soiree(her_soiree.id); });
         });
       })
       .catch( error => { console.error( error ); });
   }
 
-  document.querySelector('#app-start').addEventListener('click', allMovies);
-  allMovies();
+  document.querySelector('#app-start').addEventListener('click', allher_soiree);
+  allher_soiree();
 });
