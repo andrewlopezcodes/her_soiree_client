@@ -300,41 +300,13 @@ window.addEventListener('load', () => {
         <label for="edit-participant_age">Participant age</label>
         <input type="text" id="edit-participant_age" class="form-control" />
       </div>
-      <div style="overflow:hidden;">
-        <div class="form-group">
-          <div class="row">
-            <div class="col-md-8">
-              <div id="edit-event_start_time">
-              </div>
-            </div>
-          </div>
-        </div>
-        <script type="text/javascript">
-          $(function () {
-            $('#event_start_time').datetimepicker({
-              inline: true,
-              sideBySide: true
-            });
-          });
-        </script>
+      <div class="form-group">
+        <label for="edit-event_start_time">Event Start Time</label>
+        <input type="date" id="edit-event_start_time" class="form-control" />
       </div>
-      <div style="overflow:hidden;">
-        <div class="form-group">
-          <div class="row">
-            <div class="col-md-8">
-              <div id="edit-event_finish_time">
-              </div>
-            </div>
-          </div>
-        </div>
-        <script type="text/javascript">
-          $(function () {
-            $('#event_finish_time').datetimepicker({
-              inline: true,
-              sideBySide: true
-            });
-          });
-        </script>
+      <div class="form-group">
+        <label for="edit-event_finish_time">Event Finish Time</label>
+        <input type="date" id="edit-event_finish_time" class="form-control" />
       </div>
       <div class="form-group">
         <label for="edit-event_frequency">Event Frequency</label>
