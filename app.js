@@ -254,53 +254,53 @@ window.addEventListener('load', () => {
     <form>
       <div class="form-group">
         <label for="edit-title">Title</label>
-        <input type="text" id="eidit-title" class="form-control" />
+        <input type="text" id="edit-title" class="form-control" />
       </div>
       <div class="form-group">
         <label for="edit-organizer_name">Organizer name</label>
-        <input type="text" id="eidit-organizer_name" class="form-control" />
+        <input type="text" id="edit-organizer_name" class="form-control" />
       </div>
       <div class="form-group">
         <label for="edit-organizer_website_url">Organizer website url</label>
-        <input type="url" id="eidit-organizer_website_url" class="form-control" />
+        <input type="url" id="edit-organizer_website_url" class="form-control" />
       </div>
       <div class="form-group">
         <label for="edit-event_type">Event type</label>
-        <input type="text" id="eidit-event_type" class="form-control" />
+        <input type="text" id="edit-event_type" class="form-control" />
       </div>
       <div class="form-group">
         <label for="edit-description">Description</label>
-        <input type="text" id="eidit-description" class="form-control" />
+        <input type="text" id="edit-description" class="form-control" />
       </div>
       <div class="form-group">
         <label for="edit-venue_name">Venue name</label>
-        <input type="text" id="eidit-venue_name" class="form-control" />
+        <input type="text" id="edit-venue_name" class="form-control" />
       </div>
       <div class="form-group">
         <label for="edit-street_address">Street Address</label>
-        <input type="text" id="eidit-street_address" class="form-control" />
+        <input type="text" id="edit-street_address" class="form-control" />
       </div>
       <div class="form-group">
         <label for="edit-city">City</label>
-        <input type="text" id="eidit-city" class="form-control" />
+        <input type="text" id="edit-city" class="form-control" />
       </div>
       <div class="form-group">
         <label for="edit-state">State</label>
-        <input type="text" id="eidit-state" class="form-control" />
+        <input type="text" id="edit-state" class="form-control" />
       </div>
       <div class="form-group">
         <label for="edit-zipcode">Zipcode</label>
-        <input type="text" id="eidit-zipcode" class="form-control" />
+        <input type="text" id="edit-zipcode" class="form-control" />
       </div>
       <div class="form-group">
         <label for="edit-participant_age">Participant age</label>
-        <input type="text" id="eidit-participant_age" class="form-control" />
+        <input type="text" id="edit-participant_age" class="form-control" />
       </div>
       <div style="overflow:hidden;">
         <div class="form-group">
           <div class="row">
             <div class="col-md-8">
-              <div id="eidit-event_start_time">
+              <div id="edit-event_start_time">
               </div>
             </div>
           </div>
@@ -318,7 +318,7 @@ window.addEventListener('load', () => {
         <div class="form-group">
           <div class="row">
             <div class="col-md-8">
-              <div id="eidit-event_finish_time">
+              <div id="edit-event_finish_time">
               </div>
             </div>
           </div>
@@ -334,21 +334,21 @@ window.addEventListener('load', () => {
       </div>
       <div class="form-group">
         <label for="edit-event_frequency">Event Frequency</label>
-        <input type="text" id="eidit-event_frequency" class="form-control" />
+        <input type="text" id="edit-event_frequency" class="form-control" />
       </div>
       <div class="form-group">
         <label for="edit-dress_code">Dress Code</label>
-        <input type="text" id="eidit-dress_code" class="form-control" />
+        <input type="text" id="edit-dress_code" class="form-control" />
       </div>
       <div class="form-group">
         <label for="edit-event_price">Ticket Price</label>
-        <input type="text" id="eidit-event_price" class="form-control" />
+        <input type="text" id="edit-event_price" class="form-control" />
       </div>
       <div class="form-group">
         <label for="edit-event_flyer_url">Event Flyer URL</label>
-        <input type="url" id="eidit-event_flyer_url" class="form-control" />
+        <input type="url" id="edit-event_flyer_url" class="form-control" />
       </div>
-      <button type="submit" class="btn btn-primary" id="eidit-create-event">Create Event</button>
+      <button type="submit" class="btn btn-primary" id="edit-create-event">Create Event</button>
     </form>
   `;
     document.querySelector('#edit-title').value = her_soiree.title;
@@ -361,7 +361,7 @@ window.addEventListener('load', () => {
   }
 
   const deleteher_soiree = id => {
-    console.log('Deleting movie no.', id);
+    console.log('Deleting her_soiree no.', id);
     axios.delete(`${baseURL}/${id}`)
     .then(result => {allher_soiree(); })
     .catch(error => {console.error(error); });
