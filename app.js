@@ -343,27 +343,24 @@ window.addEventListener('load', () => {
   const allher_soiree = () => {
     document.querySelector('#app').innerHTML = `
       <body>
-        <nav class="navbar navbar-inverse">
-          <div class="container-fluid">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapese" data-target="myNavbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
+      <div class="row" id="rownav">
+        <a class="navbar-brand" href="#"><img src="herSoiree-word-logo.png" id="her_soiree_logo"></a>
+        <div class="col-sm-4" id="rownav-colum">
 
-              </button>
-              <a class="navbar-brand" href="#"><img src="herSoiree-word-logo.png" id="her_soiree_logo"></a>
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+          <label class="btn btn-secondary active">
+            <input type="radio" id="option1" autocomplete="off" checked>Home</label>
+          <label class="btn btn-secondary">
+            <input type="radio" id="option2" autocomplete="off">Browse</label>
+          <label class="btn btn-secondary">
+            <input type="radio" id="option3" autocomplete="off">Contact</label>
+        </div>
 
-          </div>
-          <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav navbar-right">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#">Browse Events</a></li>
-              <li><a href="#">Create Events</a></li>
-              <li><a href="#">Contact</a></li>
-            </ul>
-          </div>
-        </nav> <!---- End of Navbar---->
+        </div>
+      </div>
+
+
+        <!---- End of Navbar---->
 
         <div class="container text-center" id="row1">
           <h2>Events Near You</h2>
@@ -522,6 +519,126 @@ window.addEventListener('load', () => {
         });
       })
       .catch( error => { console.error( error ); });
+
+    const displayher_soiree = her_soiree =>{
+      document.querySelector('#app2').innerHTML = `
+      <button type="button" class="btn btn-primary" id="home_button">Home</button>
+
+      <div class="h3">${her_soiree.title}</div>
+      <img src="${her_soiree.event_flyer_url}" width="40%" />
+      <table class="table table-striped">
+        <tbody>
+          <tr>
+            <th scope="row">Event Title</th>
+            <td>${her_soiree.title}</td>
+          </tr>
+          <tr>
+            <th scope="row">Organizer's Name</th>
+            <td>${her_soiree.organizer_name}</td>
+          </tr>
+          <tr>
+            <th scope="row">Organizer's Website</th>
+            <td>${her_soiree.organizer_website_url}</td>
+          </tr>
+          <tr>
+            <th scope="row">Event Type</th>
+            <td>${her_soiree.event_type}</td>
+          </tr>
+          <tr>
+            <th scope="row">Event Topic</th>
+            <td>${her_soiree.event_topic}</td>
+          </tr>
+          <tr>
+            <th scope="row">Description</th>
+            <td>${her_soiree.description}</td>
+          </tr>
+          <tr>
+            <th scope="row">Venue Name</th>
+            <td>${her_soiree.venue_name}</td>
+          </tr>
+          <tr>
+            <th scope="row">Stree Address</th>
+            <td>${her_soiree.street_address}</td>
+          </tr>
+          <tr>
+            <th scope="row">City</th>
+            <td>${her_soiree.city}</td>
+          </tr>
+          <tr>
+            <th scope="row">State</th>
+            <td>${her_soiree.state}</td>
+          </tr>
+          <tr>
+            <th scope="row">Zipcode</th>
+            <td>${her_soiree.zipcode}</td>
+          </tr>
+          <tr>
+            <th scope="row">Participants Age</th>
+            <td>${her_soiree.participant_age}</td>
+          </tr>
+          <tr>
+            <th scope="row">Event Start Time</th>
+            <td>${her_soiree.event_start_time}</td>
+          </tr>
+          <tr>
+            <th scope="row">Event Finish Time</th>
+            <td>${her_soiree.event_finish_time}</td>
+          </tr>
+          <tr>
+            <th scope="row">Event Frequency</th>
+            <td>${her_soiree.event_frequency}</td>
+          </tr>
+          <tr>
+            <th scope="row">Dress Code</th>
+            <td>${her_soiree.dress_code}</td>
+          </tr>
+          <tr>
+            <th scope="row">Event Price</th>
+            <td>${her_soiree.event_price}</td>
+          </tr>
+          <tr>
+            <th scope="row">event_flyer_url</th>
+            <td>${her_soiree.event_flyer_url}</td>
+          </tr>
+        </tbody>
+      </table>
+    `;
+  }
+    document.querySelector('#new-her_soiree').addEventListener('click', newher_soiree);
+    axios.get( baseURL )
+      .then( her_soiree => {
+        her_soiree.data.forEach( her_soiree => {
+          const trEl = document.createElement('tr');
+          trEl.innerHTML = `
+          <td>${her_soiree.title}</td>
+          <td id="show-${her_soiree.id}">${her_soiree.title}</td>
+          <td>${her_soiree.organizer_name}</td>
+          <td>${her_soiree.organizer_website_url}</td>
+          <td>${her_soiree.event_type}</td>
+          <td>${her_soiree.event_topic}</td>
+          <td>${her_soiree.description}</td>
+          <td>${her_soiree.venue_name}</td>
+          <td>${her_soiree.street_address}</td>
+          <td>${her_soiree.city}</td>
+          <td>${her_soiree.state}</td>
+          <td>${her_soiree.zipcode}</td>
+          <td>${her_soiree.participant_age}</td>
+          <td>${her_soiree.event_start_time}</td>
+          <td>${her_soiree.event_finish_time}</td>
+          <td>${her_soiree.event_frequency}</td>
+          <td>${her_soiree.dress_code}</td>
+          <td>${her_soiree.event_price}</td>
+          <td>${her_soiree.event_flyer_url}</td>
+          <td><button type="button" class="btn btn-info btn-sm" id="edit-${her_soiree.id}">Edit Soiree</button>&nbsp;<button type="button" class="btn btn-danger btn-sm" id="delete-${her_soiree.id}">Delete Soiree</button></td>
+          `;
+          document.querySelector('#her_soiree-tbody').appendChild(trEl);
+          document.querySelector(`#show-${her_soiree.id}`).addEventListener('click', () => { showMovie(her_soiree); });
+          document.querySelector(`#edit-${her_soiree.id}`).addEventListener('click', () => { editMovie(her_soiree); });
+          document.querySelector(`#delete-${her_soiree.id}`).addEventListener('click', () => { deleteMovie(her_soiree.id); });
+        });
+      })
+      .catch( error => { console.error( error ); });
+
   }
 
   document.querySelector('#app-start').addEventListener('click', allher_soiree);
