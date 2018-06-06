@@ -1,6 +1,7 @@
 window.addEventListener('load', () => {
 
 
+
   const baseURL = 'http://localhost:3018/her_soiree';
 
   const createher_soiree = () => {
@@ -18,21 +19,22 @@ window.addEventListener('load', () => {
     const state = document.querySelector('#state').value;
     const zipcode = document.querySelector('#zipcode').value;
     const participant_age = document.querySelector('#participant_age').value;
-    const event_start_time = document.querySelector('#event_start_time').value;
-    const event_finish_time =document.querySelector('#event_finish_time').value;
+    const event_start_time = document.querySelector('#event_start_time').value
+    const event_finish_time = document.querySelector('#event_finish_time').value
     const event_frequency = document.querySelector('#event_frequency').value;
     const dress_code = document.querySelector('#dress_code').value;
     const event_price = document.querySelector('#event_price').value;
     const event_flyer_url = document.querySelector('#event_flyer_url').value;
     axios.post(baseURL, {title, organizer_name, organizer_website_url, event_type, event_topic, description, venue_name, street_address, city, state, zipcode, participant_age, event_start_time, event_start_time, event_finish_time, event_frequency, dress_code, event_price, event_flyer_url})
       .then( result => {
-        showher_sSoiree( result.data );
+        showher_soiree( result.data );
       })
       .catch( error => { console.error( error ); });
   }
 
   const newher_soiree = () => {
     document.querySelector('#app').innerHTML = `
+    <button type="button" class="btn btn-primary" id="home_button">Home</button>
       <form>
         <div class="form-group">
           <label for="title">Title</label>
@@ -49,6 +51,10 @@ window.addEventListener('load', () => {
         <div class="form-group">
           <label for="event_type">Event type</label>
           <input type="text" id="event_type" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label for="event_topic">Event topic</label>
+          <input type="text" id="event_topic" class="form-control" />
         </div>
         <div class="form-group">
           <label for="description">Description</label>
@@ -78,41 +84,13 @@ window.addEventListener('load', () => {
           <label for="participant_age">Participant age</label>
           <input type="text" id="participant_age" class="form-control" />
         </div>
-        <div style="overflow:hidden;">
-          <div class="form-group">
-            <div class="row">
-              <div class="col-md-8">
-                <div id="event_start_time">
-                </div>
-              </div>
-            </div>
-          </div>
-          <script type="text/javascript">
-            $(function () {
-              $('#event_start_time').datetimepicker({
-                inline: true,
-                sideBySide: true
-              });
-            });
-          </script>
+        <div class="form-group">
+          <label for="event_start_time">Event Start Time</label>
+          <input type="datetime-local" id="event_start_time" class="form-control" />
         </div>
-        <div style="overflow:hidden;">
-          <div class="form-group">
-            <div class="row">
-              <div class="col-md-8">
-                <div id="event_finish_time">
-                </div>
-              </div>
-            </div>
-          </div>
-          <script type="text/javascript">
-            $(function () {
-              $('#event_finish_time').datetimepicker({
-                inline: true,
-                sideBySide: true
-              });
-            });
-          </script>
+        <div class="form-group">
+          <label for="event_finish_time">Event Finish Time</label>
+          <input type="datetime-local" id="event_finish_time" class="form-control" />
         </div>
         <div class="form-group">
           <label for="event_frequency">Event Frequency</label>
@@ -130,10 +108,11 @@ window.addEventListener('load', () => {
           <label for="event_flyer_url">Event Flyer URL</label>
           <input type="url" id="event_flyer_url" class="form-control" />
         </div>
-        <button type="submit" class="btn btn-primary" id="create-event">Create Event</button>
+        <button type="submit" class="btn btn-primary" id="create-her_soiree">Create Event</button>
       </form>
     `;
-    document.querySelector('#create-her_soiree').addEventListener('click', createher_soire);
+    document.querySelector('#home_button').addEventListener('click', allher_soiree);
+    document.querySelector('#create-her_soiree').addEventListener('click', createher_soiree);
   }
 
   const showher_soiree = her_soiree => {
@@ -252,6 +231,7 @@ window.addEventListener('load', () => {
 
   const edither_soiree = her_soiree => {
     document.querySelector('#app').innerHTML = `
+    <button type="button" class="btn btn-primary" id="home_button">Home</button>
     <form>
       <div class="form-group">
         <label for="edit-title">Title</label>
@@ -362,35 +342,151 @@ window.addEventListener('load', () => {
 
   const allher_soiree = () => {
     document.querySelector('#app').innerHTML = `
+      <body>
+        <nav class="navbar navbar-inverse">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapese" data-target="myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+
+              </button>
+              <a class="navbar-brand" href="#"><img src="herSoiree-word-logo.png" id="her_soiree_logo"></a>
+
+          </div>
+          <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#">Browse Events</a></li>
+              <li><a href="#">Create Events</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+        </nav> <!---- End of Navbar---->
+
+        <div class="container text-center" id="row1">
+          <h2>Events Near You</h2>
+          <div class="row">
+            <div class="col-sm-4">
+              <img src="images/curl fest.jpg" id="icon">
+              <h4>curl fest</h4>
+            </div>
+            <div class="col-sm-4">
+              <img src="images/cake and ux.jpg" id="icon">
+              <h4>cake and ux</h4>
+            </div>
+            <div class="col-sm-4">
+              <img src="images/womens mentoring network.jpg" id="icon">
+              <h4>women's mentoring network</h4>
+            </div>
+            </div>
+          </div>
+        </div> <!------End of row 1---->
+
+        <div class="container">
+          <div class="row"id="row2">
+            <div class="col-md-6">
+              <h2 id="row3A">Create Event</h2>
+              <p id="row3">Whether you are looking to create a small event for a few friends or you planning the next mega festival. HerSoiree is her for you.</p>
+              <button type="button" class="btn btn-primary" id="newher_soiree">Create Soiree</button>
+
+            </div>
+            <div class="col-md-6">
+            <img src="images/festival.jpg" class="img-responsive">
+            </div>
+          </div>
+        </div>
+
+
+        <div class="container">
+          <div class="row" id="row4">
+            <p id="row4top">Browse Top Categories</p>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+              <img src="images/her_soiree-festival.jpeg" class="img-responsive">
+              <p>Festival</p>
+
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <img src="images/her_soiree-expo.jpeg" class="img-responsive">
+            <p>Expos</p>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+              <img src="images/her_soiree-nightlife.jpg" class="img-responsive">
+              <p>Nightlife Party</p>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <img src="images/her_soiree-dayparty.jpg" class="img-responsive">
+            <p>Daytime Party</p>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <img src="images/her_soiree-concert.jpg" class="img-responsive">
+            <p>Concert</p>
+
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <img src="images/her_soiree-activism.jpeg" class="img-responsive">
+            <p>Social Justice</p>
+
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <img src="images/her_soiree-gala.jpg" class="img-responsive">
+            <p>Gala</p>
+
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <img src="images/her_soiree-food.jpg" class="img-responsive">
+            <p>Food</p>
+
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <img src="images/her_soiree-destination.jpg" class="img-responsive">
+            <p>Destination Trip</p>
+
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <img src="images/her_soiree-fashion.jpg" class="img-responsive">
+            <p>Fashion Show</p>
+
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <img src="images/her_soiree-sports.jpg" class="img-responsive">
+            <p>Sports & Wellness</p>
+
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <img src="images/her_soiree-popup.jpg" class="img-responsive">
+            <p>Popup Shop</p>
+
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <img src="images/her_soiree-jobfair.jpg" class="img-responsive">
+            <p>Career Fair</p>
+
+          </div>
+
+          </div>
+        </div> <!------End of 4 column---->
       <div>
-        <button type="button" class="btn btn-success" id="newher_soiree">Add a Soiree</button>
       </div>
-      <table class="table table-striped table-dark">
-        <thead>
-          <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Title</th>
-            <th scope="col">Organizer Name</th>
-            <th scope="col">Organizer Website</th>
-            <th scope="col">Event Type</th>
-            <th scope="col">Event Topic</th>
-            <th scope="col">Description</th>
-            <th scope="col">Venue Name</th>
-            <th scope="col">Street Address</th>
-            <th scope="col">City</th>
-            <th scope="col">State</th>
-            <th scope="col">Zipcode</th>
-            <th scope="col">Participant Age</th>
-            <th scope="col">Event Start Time</th>
-            <th scope="col">Event Finish Time</th>
-            <th scope="col">Event Frequency</th>
-            <th scope="col">Dress Code</th>
-            <th scope="col">Price</th>
-            <th scope="col">Flyer URL</th>
-          </tr>
-        </thead>
-        <tbody id="her_soiree-tbody"></tbody>
-      </table>
+        <footer class="container-fluid text-center">
+          <div class="row">
+            <div class="col-sm-6">
+              <h3>Contact Me</h3>
+              <br>
+              <h4>(347)201-1973</h4>
+              <h4>andrewlopezcodes@gmail.com</h4>
+
+            </div>
+            <div class="col-sm-6">
+              <h3>Connect with Me</h3>
+              <a href="http://linkedin.com/in/andrew-lopez-1b666b52" class="fa fa-linkedin"></a>
+              <a href="https://github.com/mrandrewlopez" class="fa fa-github"></a>
+            </div>
+          </div>
+        </div>
+        </footer>
+        </body>
     `;
     document.querySelector('#newher_soiree').addEventListener('click', newher_soiree);
     axios.get( baseURL )

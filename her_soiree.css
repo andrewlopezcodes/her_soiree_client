@@ -1,7 +1,11 @@
+body{
+  background-color: white;
+}
 .container{
-  background-color: #c9acfb;
+
 }
 .navbar {
+  width: 100%;
   margin-bottom: 0;
   border-radius: 0;
   background-color: #FBACB9;
@@ -43,6 +47,13 @@
   background: #00077F;
   border: 2px solid #fff;
 }
+#row1{
+  background-color: #c9acfb;
+}
+#row2{
+  background-color: #c9acfb;
+}
+
 #row3A {
   font-size: 30px;
   text-align: center;
@@ -54,7 +65,7 @@
   margin-left: 10%;
   font-size: 20px;
 }
-#createSoireebutton{
+#newher_soiree{
   background-color: #c699e0;
   border: 2px solid #263449;
 
@@ -62,10 +73,25 @@
   margin-right: 50%;
   margin-bottom: 20px;
 }
+#home_button{
+  background-color: #c699e0;
+  border: 2px solid #263449;
+
+  margin-right: 50%;
+  margin-bottom: 20px;
+}
+#create-her_soiree{
+  background-color: #c699e0;
+  border: 2px solid #263449;
+
+  margin-right: 50%;
+  margin-bottom: 20px;  
+}
 .container {
   margin: 10px auto;
 }
 #row4{
+  background-color: #c9acfb;
   text-align: center;
   font-size: 25px;
 }
