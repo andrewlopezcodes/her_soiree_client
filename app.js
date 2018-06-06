@@ -221,9 +221,9 @@ window.addEventListener('load', () => {
     `;
   }
 
-  const updateher_soire = id =>{
+  const updateher_soiree = id =>{
     event.preventDefault();
-    console.log('createher_soire');
+    console.log('updateher_soiree');
     const title = document.querySelector('#edit-title').value;
     const organizer_name = document.querySelector('#edit-organizer_name').value;
     const organizer_website_url = document.querySelector('#edit-organizer_website_url').value;
@@ -242,8 +242,9 @@ window.addEventListener('load', () => {
     const dress_code = document.querySelector('#edit-dress_code').value;
     const event_price = document.querySelector('#edit-event_price').value;
     const event_flyer_url = document.querySelector('#edit-event_flyer_url').value;
-    axios.post(baseURL, {title, organizer_name, organizer_website_url, event_type, event_topic, description, venue_name, street_address, city, state, zipcode, participant_age, event_start_time, event_start_time, event_finish_time, event_frequency, dress_code, event_price, event_flyer_url})
+    axios.put(`${baseURL}/${id}`, {title, organizer_name, organizer_website_url, event_type, event_topic, description, venue_name, street_address, city, state, zipcode, participant_age, event_start_time, event_start_time, event_finish_time, event_frequency, dress_code, event_price, event_flyer_url})
       .then( result => {
+        console.log(result);
         showher_soiree( result.data );
       })
       .catch( error => { console.error( error ); });
@@ -262,7 +263,7 @@ window.addEventListener('load', () => {
       </div>
       <div class="form-group">
         <label for="edit-organizer_website_url">Organizer website url</label>
-        <input type="url" id="edit-organizer_website_url" class="form-control" />
+        <input type="text" id="edit-organizer_website_url" class="form-control" />
       </div>
       <div class="form-group">
         <label for="edit-event_type">Event type</label>
@@ -302,11 +303,11 @@ window.addEventListener('load', () => {
       </div>
       <div class="form-group">
         <label for="edit-event_start_time">Event Start Time</label>
-        <input type="date" id="edit-event_start_time" class="form-control" />
+        <input type="datetime-local" id="edit-event_start_time" class="form-control" />
       </div>
       <div class="form-group">
         <label for="edit-event_finish_time">Event Finish Time</label>
-        <input type="date" id="edit-event_finish_time" class="form-control" />
+        <input type="datetime-local" id="edit-event_finish_time" class="form-control" />
       </div>
       <div class="form-group">
         <label for="edit-event_frequency">Event Frequency</label>
@@ -324,7 +325,7 @@ window.addEventListener('load', () => {
         <label for="edit-event_flyer_url">Event Flyer URL</label>
         <input type="url" id="edit-event_flyer_url" class="form-control" />
       </div>
-      <button type="submit" class="btn btn-primary" id="edit-create-event">Update Event</button>
+      <button type="submit" class="btn btn-primary" id="update-her_soiree">Update Soiree</button>
     </form>
   `;
     document.querySelector('#edit-title').value = her_soiree.title;
@@ -339,15 +340,18 @@ window.addEventListener('load', () => {
     document.querySelector('#edit-state').value = her_soiree.state;
     document.querySelector('#edit-zipcode').value = her_soiree.zipcode;
     document.querySelector('#edit-participant_age').value = her_soiree.participant_age;
-    document.querySelector('#edit-event_start_time').value = her_soiree.event_start_time;
-    document.querySelector('#edit-event_finish_time').value = her_soiree.event_finish_time;
+    document.querySelector('#edit-event_start_time').value = her_soiree.event_start_time.slice(0, -1);
+    document.querySelector('#edit-event_finish_time').value = her_soiree.event_finish_time.slice(0, -1);
+    console.log('times', her_soiree.event_start_time); // debug
+    console.log(typeof her_soiree.event_start_time); // debug
     document.querySelector('#edit-event_frequency').value = her_soiree.event_frequency;
     document.querySelector('#edit-dress_code').value = her_soiree.dress_code;
     document.querySelector('#edit-event_price').value = her_soiree.event_price;
     document.querySelector('#edit-event_flyer_url').value = her_soiree.event_flyer_url;
-    document.querySelector('#updateher_soiree').addEventListener('click', ()=>{
-      updateher_soire(her_soiree.id); });
+    document.querySelector('#update-her_soiree').addEventListener('click', ()=>{
+      updateher_soiree(her_soiree.id); });
   }
+
 
   const deleteher_soiree = id => {
     console.log('Deleting her_soiree no.', id);
