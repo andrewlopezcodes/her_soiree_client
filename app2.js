@@ -56,6 +56,10 @@ window.addEventListener('load', () => {
           <input type="text" id="event_type" class="form-control" />
         </div>
         <div class="form-group">
+          <label for="event_type">Event topic</label>
+          <input type="text" id="event_topic" class="form-control" />
+        </div>
+        <div class="form-group">
           <label for="description">Description</label>
           <input type="text" id="description" class="form-control" />
         </div>
@@ -322,8 +326,8 @@ window.addEventListener('load', () => {
     document.querySelector('#edit-state').value = her_soiree.state;
     document.querySelector('#edit-zipcode').value = her_soiree.zipcode;
     document.querySelector('#edit-participant_age').value = her_soiree.participant_age;
-    document.querySelector('#edit-event_start_time').value =     document.querySelector('#edit-event_start_time').value = her_soiree.event_start_time;
-    document.querySelector('#edit-event_finish_time').value = her_soiree.event_finish_time;
+    document.querySelector('#edit-event_start_time').value = her_soiree.event_start_time.slice(0, -1);
+    document.querySelector('#edit-event_finish_time').value = her_soiree.event_finish_time.slice(0, -1);
     document.querySelector('#edit-event_frequency').value = her_soiree.event_frequency;
     document.querySelector('#edit-dress_code').value = her_soiree.dress_code;
     document.querySelector('#edit-event_price').value = her_soiree.event_price;
