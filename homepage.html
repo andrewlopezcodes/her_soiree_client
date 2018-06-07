@@ -12,6 +12,21 @@
 
   </head>
   <body class="container">
+    <div class="row" id="rownav">
+      <a class="navbar-brand" href="#"><img src="herSoiree-word-logo.png" id="her_soiree_logo"></a>
+      <div class="col-sm-4" id="rownav-colum">
+      <div class="btn-group btn-group-toggle" data-toggle="buttons">
+        <label class="btn btn-secondary">
+        <input type="radio" id="option1"  onclick="location.href='her_soiree.html'">Home</label>
+        <label class="btn btn-secondary">
+          <input type="radio" id="option2"  onclick="location.href='All Soirees.html'">All Soirees</label>
+      <label class="btn btn-secondary active">
+        <input type="radio" id="option3"  onclick="location.href='homepage.html'">Data</label>
+      </div>
+
+      </div>
+    </div>
+    <button type="button" class="btn btn-success" id="newher_soiree">Add a Soiree</button>
     <div class="h2 mx-auto" id="app-start"></div>
     <div class="row">
       <div id="app"></div>

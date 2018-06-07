@@ -26,6 +26,7 @@ body{
   background-color: white;
   margin-left: 20px;
 }
+#
 
 #row1{
   background-color: #c9acfb;
@@ -46,8 +47,10 @@ body{
   font-size: 20px;
 }
 #newher_soiree{
+  float: left;
   background-color: #c699e0;
   border: 2px solid #263449;
+  margin-top: 10px;
 
   margin-left: 40%;
   margin-right: 50%;
@@ -92,6 +95,46 @@ body{
   margin-left: 10px;
   margin-right: 20px;
 }
+#blogpost-titles{
+  float: left;
+  width: 33%;
+  padding-right: 30px;
+  padding-bottom: 100%;
+  background-color: white;
+  text-align: center;
+  border: #000000 10px;
+}
+
+#blogpost-titles-list{
+  list-style-type: none;
+}
+#blogpost-titles-list li{
+text-align: left;
+padding-bottom: 10px;
+}
+
+#main-panel {
+  float: none;
+  padding-left: 100px;
+  width: 200%;
+  text-align:justify;
+  background-color: #FFFEE4;
+  text-align: center;
+}
+label {
+  width: 100px;
+
+}
+#label-title {
+  padding-bottom: 10px;
+}
+button {
+  margin: 5px 5px 5px 5px;
+}
+
+
+
+
 footer {
   width: 100%;
   background-color: #FBACB9;

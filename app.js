@@ -348,11 +348,11 @@ window.addEventListener('load', () => {
         <div class="col-sm-4" id="rownav-colum">
         <div class="btn-group btn-group-toggle" data-toggle="buttons">
           <label class="btn btn-secondary active">
-            <input type="radio" id="option1" autocomplete="off" checked>Home</label>
+            <input type="radio" id="option2"  onclick="location.href='her_soiree.html'">Home</label>
+            <label class="btn btn-secondary">
+              <input type="radio" id="option2"  onclick="location.href='All Soirees.html'">All Soirees</label>
           <label class="btn btn-secondary">
-            <input type="radio" id="option2" autocomplete="off">Browse</label>
-          <label class="btn btn-secondary">
-            <input type="radio" id="option3" autocomplete="off" onclick="location.href='homepage.html'">Data</label>
+            <input type="radio" id="option3"  onclick="location.href='homepage.html'">Data</label>
         </div>
 
         </div>
@@ -583,9 +583,9 @@ window.addEventListener('load', () => {
           <td><button type="button" class="btn btn-info btn-sm" id="edit-${her_soiree.id}">Edit Soiree</button>&nbsp;<button type="button" class="btn btn-danger btn-sm" id="delete-${her_soiree.id}">Delete Soiree</button></td>
           `;
           document.querySelector().appendChild(trEl);
-          document.querySelector(`#show-${her_soiree.id}`).addEventListener('click', () => { showMovie(her_soiree); });
-          document.querySelector(`#edit-${her_soiree.id}`).addEventListener('click', () => { editMovie(her_soiree); });
-          document.querySelector(`#delete-${her_soiree.id}`).addEventListener('click', () => { deleteMovie(her_soiree.id); });
+          document.querySelector(`#show-${her_soiree.id}`).addEventListener('click', () => { showher_soiree(her_soiree); });
+          document.querySelector(`#edit-${her_soiree.id}`).addEventListener('click', () => { edither_soiree(her_soiree); });
+          document.querySelector(`#delete-${her_soiree.id}`).addEventListener('click', () => { deleteher_soiree(her_soiree.id); });
         });
       })
       .catch( error => { console.error( error ); });
