@@ -35,7 +35,7 @@ window.addEventListener('load', ()=> {
 
 
   const newher_soiree = () => {
-    document.querySelector('#app').innerHTML = `
+    mainPanelEl.innerHTML = `
     <button type="button" class="btn btn-primary" id="home_button">Home</button>
       <form>
         <div class="form-group">
@@ -119,8 +119,39 @@ window.addEventListener('load', ()=> {
   }
 
 
+
+
+
+  const updateher_soiree = id =>{
+    event.preventDefault();
+    console.log('updateher_soiree');
+    const title = document.querySelector('#edit-title').value;
+    const organizer_name = document.querySelector('#edit-organizer_name').value;
+    const organizer_website_url = document.querySelector('#edit-organizer_website_url').value;
+    const event_type = document.querySelector('#edit-event_type').value;
+    const event_topic = document.querySelector('#edit-event_topic').value;
+    const description = document.querySelector('#edit-description').value;
+    const venue_name = document.querySelector('#edit-venue_name').value;
+    const street_address = document.querySelector('#edit-street_address').value;
+    const city = document.querySelector('#edit-city').value;
+    const state = document.querySelector('#edit-state').value;
+    const zipcode = document.querySelector('#edit-zipcode').value;
+    const participant_age = document.querySelector('#edit-participant_age').value;
+    const event_start_time = document.querySelector('#edit-event_start_time').value;
+    const event_finish_time =document.querySelector('#edit-event_finish_time').value;
+    const event_frequency = document.querySelector('#edit-event_frequency').value;
+    const dress_code = document.querySelector('#edit-dress_code').value;
+    const event_price = document.querySelector('#edit-event_price').value;
+    const event_flyer_url = document.querySelector('#edit-event_flyer_url').value;
+    axios.put(`${baseURL}/${id}`, {title, organizer_name, organizer_website_url, event_type, event_topic, description, venue_name, street_address, city, state, zipcode, participant_age, event_start_time, event_start_time, event_finish_time, event_frequency, dress_code, event_price, event_flyer_url})
+      .then( result => {
+        console.log(result);
+        showher_soiree( result.data );
+      })
+      .catch( error => { console.error( error ); });
+  }
   const edither_soiree = her_soiree => {
-    document.querySelector('#app3').innerHTML = `
+    mainPanelEl.innerHTML = `
     <button type="button" class="btn btn-primary" id="home_button">Home</button>
     <form>
       <div class="form-group">
@@ -197,7 +228,7 @@ window.addEventListener('load', ()=> {
       </div>
       <button type="submit" class="btn btn-primary" id="update-her_soiree">Update Soiree</button>
     </form>
-  `;
+  `
     document.querySelector('#edit-title').value = her_soiree.title;
     document.querySelector('#edit-organizer_name').value =her_soiree.organizer_name;
     document.querySelector('#edit-organizer_website_url').value = her_soiree.organizer_website_url;
@@ -218,8 +249,8 @@ window.addEventListener('load', ()=> {
     document.querySelector('#edit-dress_code').value = her_soiree.dress_code;
     document.querySelector('#edit-event_price').value = her_soiree.event_price;
     document.querySelector('#edit-event_flyer_url').value = her_soiree.event_flyer_url;
-    document.querySelector('#update-her_soiree').addEventListener('click', ()=>{
-      updateher_soiree(her_soiree.id); });
+    document.querySelector('#updateher_soiree').addEventListener('click', ()=>{
+      updateher_soiree(her_soiree) });
   }
 
   const deleteher_soiree = id => {
@@ -229,39 +260,18 @@ window.addEventListener('load', ()=> {
     .catch(error => {console.error(error); });
   }
 
-  const updateher_soiree = id =>{
-    event.preventDefault();
-    console.log('updateher_soiree');
-    const title = document.querySelector('#edit-title').value;
-    const organizer_name = document.querySelector('#edit-organizer_name').value;
-    const organizer_website_url = document.querySelector('#edit-organizer_website_url').value;
-    const event_type = document.querySelector('#edit-event_type').value;
-    const event_topic = document.querySelector('#edit-event_topic').value;
-    const description = document.querySelector('#edit-description').value;
-    const venue_name = document.querySelector('#edit-venue_name').value;
-    const street_address = document.querySelector('#edit-street_address').value;
-    const city = document.querySelector('#edit-city').value;
-    const state = document.querySelector('#edit-state').value;
-    const zipcode = document.querySelector('#edit-zipcode').value;
-    const participant_age = document.querySelector('#edit-participant_age').value;
-    const event_start_time = document.querySelector('#edit-event_start_time').value;
-    const event_finish_time =document.querySelector('#edit-event_finish_time').value;
-    const event_frequency = document.querySelector('#edit-event_frequency').value;
-    const dress_code = document.querySelector('#edit-dress_code').value;
-    const event_price = document.querySelector('#edit-event_price').value;
-    const event_flyer_url = document.querySelector('#edit-event_flyer_url').value;
-    axios.put(`${baseURL}/${id}`, {title, organizer_name, organizer_website_url, event_type, event_topic, description, venue_name, street_address, city, state, zipcode, participant_age, event_start_time, event_start_time, event_finish_time, event_frequency, dress_code, event_price, event_flyer_url})
-      .then( result => {
-        console.log(result);
-        showher_soiree( result.data );
-      })
-      .catch( error => { console.error( error ); });
-  }
-
-
+const updatedher_soiree = id => {
+  const title = document.querySelector('#input-title-edit').value;
+  const content = document.querySelector('#textarea-content-edit').value;
+  axios.put(`${baseURL}/${her_soiree.id}`, {title, organizer_name, organizer_website_url, event_type, event_topic, description, venue_name, street_address, city, state, zipcode, participant_age, event_start_time, event_start_time, event_finish_time, event_frequency, dress_code, event_price, event_flyer_url})
+  .then(response => {
+    console.log(response);
+    showher_soiree(response.data);
+  })
+  .catch(error => console.error(error));
+}
 
   const showher_soiree= her_soiree => {
-    event.preventDefault();
     mainPanelEl.innerHTML = '';
     const focusTitleEl = document.createElement('h3');
     const focusContentEl = document.createElement('p')
@@ -269,14 +279,19 @@ window.addEventListener('load', ()=> {
     focusContentEl.innerHTML = her_soiree.description;
     const editButtonEl = document.createElement('button');
     const deleteButtonEl = document.createElement('button');
+    const infoButtonEl = document.createElement('button');
     editButtonEl.id = 'edit-button';
     deleteButtonEl.id = 'delete-button';
+    infoButtonEl.id = 'info-button';
+    infoButtonEl.innerHTML = 'more info';
     editButtonEl.innerHTML ='Edit';
-    deleteButtonEl.innerHTML = 'Delete'
+    deleteButtonEl.innerHTML = 'Delete';
     mainPanelEl.appendChild(focusTitleEl);
     mainPanelEl.appendChild(focusContentEl);
+    mainPanelEl.appendChild(infoButtonEl);
     mainPanelEl.appendChild(editButtonEl);
     mainPanelEl.appendChild(deleteButtonEl);
+    document.querySelector('#info-button').addEventListener('click', () => {showher_soiree(her_soiree.id)});
     document.querySelector('#edit-button').addEventListener('click', () => {edither_soiree(her_soiree.id)});
     document.querySelector('#delete-button').addEventListener('click', () => {deleteher_soiree(her_soiree.id)});
   }
@@ -297,7 +312,7 @@ const loadher_soiree =() => {
 }
 
 loadher_soiree();
-document.querySelector('#newher_soiree').addEventListener('click', newher_soiree);
+document.querySelector('#app-start').addEventListener('click', loadher_soiree);
 
 
 

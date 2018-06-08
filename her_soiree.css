@@ -109,10 +109,12 @@ body{
   list-style-type: none;
 }
 #blogpost-titles-list li{
-text-align: left;
+text-align: center;
 padding-bottom: 10px;
 }
-
+#her_soireeTitlesList{
+  text-align: center;
+}
 #main-panel {
   float: none;
   padding-left: 100px;
